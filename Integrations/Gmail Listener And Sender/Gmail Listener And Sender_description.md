@@ -1,0 +1,2 @@
+ To allow us access to Gmail inbox, The user has to approve our app using an admin consent flow, by clicking on the following [link](https://oproxy.demisto.ninja/gmail).
+After authorizing the Demisto app, you will get an ID, Token, and Key, which should be inserted in the integration instance configuration's corresponding fields.

@@ -1944,6 +1944,13 @@
         },
         {
             "playbookID": "ExtractFQDNFromUrlAndEmail-Test"
+        },
+        {
+            "integrations": [
+                "Gmail Listener And Sender",
+                "Gmail"
+            ],
+            "playbookID": "Gmail Listener And Sender - Test"
         }
     ],
     "skipped_tests": {
