@@ -31,7 +31,9 @@ EMAIL = params.get('email', '')
 PROXY = params.get('proxy')
 DISABLE_SSL = params.get('insecure', False)
 FETCH_TIME = params.get('fetch_time', '1 days')
-TOKEN_RETRIEVAL_URL = 'https://us-central1-oproxy-dev.cloudfunctions.net/google-oauth2_ProvideGoogleTokenFunction'
+TOKEN_RETRIEVAL_URL = \
+    'https://us-central1-oproxy-dev.cloudfunctions.net' \
+    '/google-oauth2_ProvideGoogleTokenFunction'  # disable-secrets-detection
 ENC_KEY = params.get('enc_key')
 REFRESH_TOKEN = params.get('token')
 REG_ID = params.get('registration_id')
@@ -129,8 +131,8 @@ class Client:
                 return access_token
 
         body = json.dumps({'app_name': 'google',
-                            'registration_id': REG_ID,
-                            'encrypted_token': self.get_encrypted(REFRESH_TOKEN, ENC_KEY)})
+                          'registration_id': REG_ID,
+                           'encrypted_token': self.get_encrypted(REFRESH_TOKEN, ENC_KEY)})
 
         h = httplib2.Http(disable_ssl_certificate_validation=not DISABLE_SSL)
         dbot_response, content = h.request(TOKEN_RETRIEVAL_URL, "POST", body, {'Accept': 'application/json'})
@@ -406,8 +408,7 @@ class Client:
             'EntryContext': {'Gmail.SentMail(val.ID && val.Type && val.ID == obj.ID && val.Type == obj.Type)': gmail_context}
         }
 
-
-    def epoch_seconds(self, d = None):
+    def epoch_seconds(self, d=None):
         """
         Return the number of seconds for given date. If no date, return current.
 
@@ -816,8 +817,8 @@ def send_mail_command(client):
     template_param = args.get('templateParams')
 
     result = client.send_mail(emailto, EMAIL, subject, body, entry_ids, cc, bcc, htmlBody,
-                       replyTo, file_names, attchCID, transientFile, transientFileContent,
-                       transientFileCID, additional_headers, template_param)
+                              replyTo, file_names, attchCID, transientFile, transientFileContent,
+                              transientFileCID, additional_headers, template_param)
     return client.sent_mail_to_entry('Email sent:', [result], emailto, EMAIL, cc, bcc, htmlBody, body, subject)
 
 
@@ -899,6 +900,7 @@ def main():
 
         else:
             return_error('GMAIL: {}'.format(str(e)), traceback.format_exc())
+
 
 # python2 uses __builtin__ python3 uses builtins
 if __name__ == "__builtin__" or __name__ == "builtins":

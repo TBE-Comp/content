@@ -41,7 +41,7 @@ configuration:
   name: enc_key
   required: true
   type: 4
-description: Integration Template
+description: Gmail API based of OAuth 2.0
 display: Gmail Listener And Sender Beta
 name: Gmail Listener And Sender Beta
 script:
@@ -201,4 +201,4 @@ script:
   subtype: python3
   beta: true
   tests:
-    - Gmail Listener And Sender - Test
+  - Gmail Listener And Sender - Test
