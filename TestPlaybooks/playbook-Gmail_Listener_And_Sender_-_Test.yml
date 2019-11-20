@@ -1,6 +1,6 @@
-id: Mail Sender (New) Test
+id: Gmail Single User - Test
 version: -1
-name: Gmail Listener And Sender - Test
+name: Gmail Single User - Test
 description: ""
 starttaskid: "0"
 tasks:
@@ -67,10 +67,10 @@ tasks:
       version: -1
       name: Send mail using python
       description: Sends mail using Gmail.
-      script: Gmail Listener And Sender|||send-mail
+      script: Gmail Single User|||send-mail
       type: regular
       iscommand: true
-      brand: Gmail Listener And Sender
+      brand: Gmail Single User
     nexttasks:
       '#none#':
       - "3"
@@ -700,10 +700,10 @@ tasks:
       version: -1
       name: Send mail using python
       description: Sends mail using Gmail.
-      script: Gmail Listener And Sender|||send-mail
+      script: Gmail Single User|||send-mail
       type: regular
       iscommand: true
-      brand: Gmail Listener And Sender
+      brand: Gmail Single User
     nexttasks:
       '#none#':
       - "21"

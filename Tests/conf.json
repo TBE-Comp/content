@@ -1952,10 +1952,10 @@
         },
         {
             "integrations": [
-                "Gmail Listener And Sender",
+                "Gmail Single User",
                 "Gmail"
             ],
-            "playbookID": "Gmail Listener And Sender - Test"
+            "playbookID": "Gmail Single User - Test"
         }
     ],
     "skipped_tests": {
