@@ -31,9 +31,8 @@ EMAIL = params.get('email', '')
 PROXY = params.get('proxy')
 DISABLE_SSL = params.get('insecure', False)
 FETCH_TIME = params.get('fetch_time', '1 days')
-TOKEN_RETRIEVAL_URL = \
-    'https://us-central1-oproxy-dev.cloudfunctions.net' \
-    '/google-oauth2_ProvideGoogleTokenFunction'  # disable-secrets-detection
+OPROXY_URL = 'https://us-central1-oproxy-dev.cloudfunctions.net'  # disable-secrets-detection
+TOKEN_RETRIEVAL_URL = f'{OPROXY_URL}/google-oauth2_ProvideGoogleTokenFunction'  # disable-secrets-detection
 ENC_KEY = params.get('enc_key')
 REFRESH_TOKEN = params.get('token')
 REG_ID = params.get('registration_id')
