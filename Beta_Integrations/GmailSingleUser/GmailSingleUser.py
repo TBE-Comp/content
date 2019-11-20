@@ -634,7 +634,7 @@ class Client:
         for attachment in demisto.getArg('manualAttachObj') or []:
             res = demisto.getFilePath(os.path.basename(attachment['RealFileName']))
 
-            path = res.get('path','')
+            path = res.get('path', '')
             content_type, encoding = mimetypes.guess_type(path)
             if content_type is None or encoding is not None:
                 content_type = 'application/octet-stream'
