@@ -1,6 +1,6 @@
 category: Authentication
 commonfields:
-  id: Gmail Listener And Sender
+  id: Gmail Listener And Sender Beta
   version: -1
 configuration:
 - display: Email of user
@@ -42,8 +42,8 @@ configuration:
   required: true
   type: 4
 description: Integration Template
-display: Gmail Listener And Sender
-name: Gmail Listener And Sender
+display: Gmail Listener And Sender Beta
+name: Gmail Listener And Sender Beta
 script:
   commands:
   - arguments:
@@ -198,3 +198,7 @@ script:
   runonce: false
   script: '-'
   type: python
+  subtype: python3
+  beta: true
+  tests:
+    - Gmail Listener And Sender - Test
