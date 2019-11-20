@@ -23,7 +23,7 @@ from apiclient import discovery
 from oauth2client.client import AccessTokenCredentials
 import itertools as it
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
-
+import urllib.parse
 
 ''' GLOBAL VARS '''
 params = demisto.params()
@@ -72,14 +72,14 @@ class TextExtractHtmlParser(HTMLParser):
 
     def handle_entityref(self, name):
         if not self._ignore and name in name2codepoint:
-            self._texts.append(unichr(name2codepoint[name]))
+            self._texts.append(chr(name2codepoint[name]))
 
     def handle_charref(self, name):
         if not self._ignore:
             if name.startswith('x'):
-                c = unichr(int(name[1:], 16))
+                c = chr(int(name[1:], 16))
             else:
-                c = unichr(int(name))
+                c = chr(int(name))
             self._texts.append(c)
 
     def get_text(self):
@@ -104,7 +104,7 @@ class Client:
         https_proxy = proxies['https']
         if not https_proxy.startswith('https') and not https_proxy.startswith('http'):
             https_proxy = 'https://' + https_proxy
-        parsed_proxy = urlparse.urlparse(https_proxy)
+        parsed_proxy = urllib.parse.urlparse(https_proxy)
         proxy_info = httplib2.ProxyInfo(  # disable-secrets-detection
             proxy_type=httplib2.socks.PROXY_TYPE_HTTP,  # disable-secrets-detection
             proxy_host=parsed_proxy.hostname,
@@ -634,7 +634,7 @@ class Client:
         for attachment in demisto.getArg('manualAttachObj') or []:
             res = demisto.getFilePath(os.path.basename(attachment['RealFileName']))
 
-            path = res['path']
+            path = res.get('path','')
             content_type, encoding = mimetypes.guess_type(path)
             if content_type is None or encoding is not None:
                 content_type = 'application/octet-stream'
