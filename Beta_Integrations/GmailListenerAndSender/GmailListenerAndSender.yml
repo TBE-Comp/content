@@ -43,7 +43,7 @@ configuration:
   required: true
   type: 4
 description: Gmail API based of OAuth 2.0
-display: Gmail Listener And Sender
+display: Gmail Listener And Sender Beta
 name: Gmail Listener And Sender
 script:
   commands:
