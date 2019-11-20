@@ -105,7 +105,7 @@ class Client:
         if not https_proxy.startswith('https') and not https_proxy.startswith('http'):
             https_proxy = 'https://' + https_proxy
         parsed_proxy = urlparse.urlparse(https_proxy)
-        proxy_info = httplib2.ProxyInfo(
+        proxy_info = httplib2.ProxyInfo(  # disable-secrets-detection
             proxy_type=httplib2.socks.PROXY_TYPE_HTTP,  # disable-secrets-detection
             proxy_host=parsed_proxy.hostname,
             proxy_port=parsed_proxy.port,
